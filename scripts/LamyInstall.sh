@@ -19,7 +19,7 @@ cd ~/ || exit
 
 echo "Downloading configuration file.."
 rm -f LamyEraser.conf
-wget https://raw.githubusercontent.com/RemarkableLamyEraser/raw/main/config/LamyEraser.conf
+wget https://raw.githubusercontent.com/slotThe/RemarkableLamyEraser/raw/main/config/LamyEraser.conf
 
 echo "Creating directory for configuration file..."
 mkdir -p ~/.config/LamyEraser
@@ -47,7 +47,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
  then
   echo "Downloading service file..."
   rm -f LamyEraser.service
-  wget https://raw.githubusercontent.com/RemarkableLamyEraser/raw/main/config/LamyEraser.service
+  wget https://raw.githubusercontent.com/slotThe/RemarkableLamyEraser/raw/main/config/LamyEraser.service
   echo "Placing service file in /lib/systemd/system/"
   mv LamyEraser.service /lib/systemd/system/
   echo "Setting up RemarkableLamyEraser to start on boot..."
