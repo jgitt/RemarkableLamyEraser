@@ -13,14 +13,10 @@ static const struct input_event tool_pen_off =     {.type = EV_KEY, .code = BTN_
 static const struct input_event tool_rubber_on =   {.type = EV_KEY, .code = BTN_TOOL_RUBBER, .value = 1}; // used when rubber approaches the screen
 static const struct input_event tool_rubber_off =  {.type = EV_KEY, .code = BTN_TOOL_RUBBER, .value = 0};
 
-const char *EFFECT_STRING_FROM_INT(int effect);
-
 void write_event(int fd_touch, struct input_event event);
 void handle_current_tracking_ID(struct input_event *event);
 void write_tap_with_touch(int fd_touch, const int location[2]);
-void write_tap_with_pen(int fd_touch, const int location[2]);
-int  write_oriented_tap_sequence(int device, int fd_touch,
-                                 toolbar_orientation *orientation, int num_locations, ...);
+int  write_oriented_tap_sequence(int fd_touch, int num_locations, ...);
 
 void activate_tool_eraser(int fd_pen);
 void deactivate_tool_eraser(int fd_pen);
@@ -42,7 +38,11 @@ void action_text(int fd_touch);
 void action_eraser_panel(int fd_touch);
 void action_undo(int fd_touch);
 void action_redo(int fd_touch);
+void action_fineliner(int fd_touch);
+void action_calligraphy(int fd_touch);
+void action_black(int fd_touch);
+void action_grey(int fd_touch);
 
-void test_locations(int device, int fd);
+void test_locations(int fd);
 
 #endif // EFFECTS_H

@@ -76,14 +76,7 @@ int main(int argc, char *argv[]) {
     if (!strcmp(argv[i], "--config-file")) {
       confPath = argv[++i];
     } else if (!strcmp(argv[i], "--test-locations")) {
-      if (!strcmp(argv[i + 1], "WACOM")) {
-        test_locations(WACOM, fd_wacom); // program will exit
-      } else if (!strcmp(argv[i + 1], "TOUCH")) {
-        test_locations(TOUCH, fd_touch); // program will exit
-      } else {
-        printf("Unknown device %s. Exiting...", argv[i + 1]);
-        exit(EXIT_FAILURE);
-      }
+      test_locations(fd_touch); // program will exit
     } else {
       printf("Unknown argument %s. Valid options are:\n"
              "--config-file </path/to/config>\n"
@@ -186,6 +179,22 @@ int main(int argc, char *argv[]) {
       case REDO:
         printf("writing redo\n");
         action_redo(fd_touch);
+        break;
+      case WRITING_FINELINER:
+        printf("writing fineliner\n");
+        action_fineliner(fd_touch);
+        break;
+      case WRITING_CALLIGRAPHY:
+        printf("writing calligraphy pen\n");
+        action_calligraphy(fd_touch);
+        break;
+      case WRITING_BLACK:
+        printf("writing black colour\n");
+        action_black(fd_touch);
+        break;
+      case WRITING_GREY:
+        printf("writing grey colour\n");
+        action_grey(fd_touch);
         break;
 
       // tools here
